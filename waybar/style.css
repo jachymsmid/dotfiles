@@ -1,0 +1,133 @@
+@define-color backgrgound #ffffff;
+@define-color foreground #ffffff;
+@define-color color1 #575d60; /* dark grey */
+@define-color color2 #e6d6a8; /* beige */
+@define-color color3 #f8f0d2; /* light beige */
+@define-color color4 #e29742; /* orange */
+@define-color color5 #859793; /* gray-green */
+@define-color color6 #e3b551; /* yellow */
+@define-color color7 #7e7d7b; /* gray */
+@define-color color8 #ba9c7b; /* brown */
+@define-color color9 #835756; /* red-brown */
+@define-color color10 #5facb0; /* turquoise */
+@define-color color11 #dc860b;
+
+
+@define-color good #AADB1E;
+@define-color normal #BE5504;
+@define-color bad #FB4F14;
+
+* {
+    font-size:0.9rem;
+    font-family: "CodeNewRoman Nerd Font Propo";
+    font-weight: bold;
+}
+window#waybar{
+    all:unset;
+    /*background-color: alpha(#29465b, 0.75);*/
+}
+.tooltip {
+    background: alpha(@color7, .7);
+    color: @color5;
+}
+
+#clock,
+#network,
+#power-profiles-daemon,
+#pulseaudio,
+#backlight,
+#language,
+#battery,
+#custom-power,
+#workspaces {
+    padding: 0px 6px;
+    margin: 3px 4px;
+    margin-top: 6px;
+    border-radius: 10px;
+    transition: all .2s ease;
+}
+#clock{
+    color:@background;
+    background: @color1;
+}
+
+#workspaces button {
+    all:unset;
+    color: alpha(@color1,.9);
+    background: @color4;
+    margin: 1px 2px;
+    padding: 5px 13px;
+    border-radius: 8px;
+}
+#workspaces button:hover {
+    color: alpha(@color3,.5);
+    border: none;
+    text-shadow: 0px 0px 1.5px @color2;
+    transition: all .5s ease;
+}
+#workspaces button.active {
+    color: @color3;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
+    padding: 3px 18px;
+    border-radius: 12px;
+}
+#network{
+    transition: all .3s ease;
+    background: @color4;
+    color:@background;
+    border-bottom: 3px solid @good;
+}
+#network.disconnected{
+    border-bottom: @bad;
+}
+#pulseaudio{
+    transition: all .3s ease;
+    color:@background;
+    background: @color4;
+}
+#language{
+    background: @color4;
+    color: @background;
+}
+#battery{
+    color:@background;
+    background: @color4;
+    border-bottom: 3px solid @normal;
+
+}
+#battery.charging {
+    color: @background;
+    background: #26A65B;
+    border-bottom: 3px solid #77ff77;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffbe61;
+}
+
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+	transition: all .3s ease;
+	color: @background;
+  background: @color4;
+}
+#power-profiles-daemon.power-saver{
+  border-bottom: 3px solid #AADB1E;
+}
+#backlight {
+	color: @background;
+  background: @color4;
+}
+#custom-power{
+  color: @background;
+  background: #8b0000;
+}

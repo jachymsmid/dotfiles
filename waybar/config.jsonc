@@ -1,0 +1,128 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "spacing": 0,
+    "fixed-center": true,
+    "reload_style_on_change": true,
+    "modules-left": [
+      "clock"
+    ],
+    "modules-center": [
+	    "hyprland/workspaces"
+    ],
+    "modules-right": [
+      "hyprland/language",
+      "power-profiles-daemon",
+      "backlight",
+	    "pulseaudio",
+	    "network",
+      "battery",
+	    "custom/power"
+    ],
+    // modules config
+    "hyprland/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "warp-on-scroll": false,
+         "format": "{name}",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+    "hyprland/language": {
+        "format": "   {}",
+        "format-en": "EN",
+        "format-cz": "CZ"
+    },
+    
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    
+    "clock": {
+        "timezone": "Europe/Prague",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        // "format-alt": "{:%Y-%m-%d}"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}  {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            "good": 85,
+            "warning": 20,
+            "critical": 15
+        },
+        "format": "󰁾 {capacity}%",
+      	"tooltip": true,
+      	"tooltip-format": "Time: {time}"
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "  ",
+        "performance": "  ",
+        "balanced": "  ",
+        "power-saver": "  "
+      }
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "  {essid}",
+        "format-ethernet": "Online",
+        "tooltip-format": "{essid} {signalStrength}%",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected",
+        // "on-click": "nm-applet"
+        "tooltip": true,
+        "tooltip-format": "{essid} : {ipaddr}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "󰝟 ",
+        "format-source": " ",
+        "format-source-muted": " ",
+        "format-icons": {
+            "default": [" ", " ", " "]
+        },
+	    "tooltip": true,
+	    "tooltip-format": "Volume: {volume}%\nSource: {volume}%",
+        "on-click": "pavucontrol"
+    },
+    "custom/power": {
+      "format" : " 󰤆 ",
+      "tooltip": false,
+      "menu": "on-click",
+      "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+      "menu-actions": {
+			"shutdown": "poweroff",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		  }
+    }
+}
