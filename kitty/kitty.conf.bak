@@ -10,10 +10,10 @@ include current-theme.conf
 #: kitty has very powerful font management. You can configure
 #: individual font faces and even specify special fonts for particular
 #: characters.
-# font_family    family = "FiraMono" 
-# bold_font        auto
-# italic_font      auto
-# bold_italic_font auto
+ font_family    family = "AtkinsonHyperlegibleMono Nerd Font" 
+ bold_font        auto
+ italic_font      auto
+ bold_italic_font auto
 
 #: You can specify different fonts for the bold/italic/bold-italic
 #: variants. The easiest way to select fonts is to run the `kitten
@@ -74,7 +74,7 @@ include current-theme.conf
 
 #:     narrow_symbols codepoints [optionally the number of cells]
 
-# disable_ligatures never
+disable_ligatures never
 
 #: Choose how you want to handle multi-character ligatures. The
 #: default is to always render them. You can tell kitty to not render
@@ -842,7 +842,7 @@ include current-theme.conf
 #: because kitty is so fast that partial screen updates will be drawn.
 #: This setting is ignored when the input buffer is almost full.
 
-# sync_to_monitor yes
+sync_to_monitor yes
 
 #: Sync screen updates to the refresh rate of the monitor. This
 #: prevents screen tearing
@@ -972,7 +972,7 @@ include current-theme.conf
 #: start_resizing_window. The cells value is used for horizontal
 #: resizing, and the lines value is used for vertical resizing.
 
-# window_border_width 0.5pt
+window_border_width 0.5pt
 
 #: The width of window borders. Can be either in pixels (px) or pts
 #: (pt). Values in pts will be rounded to the nearest number of pixels
@@ -1002,7 +1002,7 @@ include current-theme.conf
 #: set the vertical and horizontal sides. Three values set top,
 #: horizontal and bottom. Four values set top, right, bottom and left.
 
-# window_padding_width 0
+window_padding_width 25
 
 #: The window padding (in pts) (blank area between the text and the
 #: window border). A single value sets all four sides. Two values set
@@ -1417,7 +1417,7 @@ background_opacity 0.8
 #: this option is overridden by the color scheme file and must be set
 #: inside it to take effect.
 
-# background_tint 0.0
+# background_tint 100.0
 
 #: How much to tint the background image by the background color. This
 #: option makes it easier to read the text. Tinting is done using the
@@ -1541,7 +1541,7 @@ background_opacity 0.8
 #: interactive mode and reads its startup rc files. Environment
 #: variables are expanded in this setting.
 
-# editor .
+editor nvim
 
 #: The terminal based text editor (such as vim or nano) to use when
 #: editing the kitty config file or similar tasks.
@@ -1763,7 +1763,7 @@ background_opacity 0.8
 #: remote machine to read/write to the local filesystem, without
 #: permission.
 
-# allow_hyperlinks yes
+allow_hyperlinks yes
 
 #: Process hyperlink escape sequences (OSC 8). If disabled OSC 8
 #: escape sequences are ignored. Otherwise they become clickable
@@ -1772,7 +1772,7 @@ background_opacity 0.8
 #: special value of ask means that kitty will ask before opening the
 #: link when clicked.
 
-# shell_integration enabled
+shell_integration enabled
 
 #: Enable shell integration on supported shells. This enables features
 #: such as jumping to previous prompts, browsing the output of the
@@ -1815,7 +1815,7 @@ background_opacity 0.8
 #: This option must be a comma separated list of the above values.
 #: Only the first valid match, in the order specified, is sourced.
 
-# notify_on_cmd_finish never
+notify_on_cmd_finish always
 
 #: Show a desktop notification when a long-running command finishes
 #: (needs shell_integration). The possible values are:
@@ -2789,10 +2789,4 @@ background_opacity 0.8
 #: }}}
 
 
-# BEGIN_KITTY_FONTS
-font_family='Noto Sans Mono CJK JP'
-font_size 14
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
-# END_KITTY_FONTS
+
