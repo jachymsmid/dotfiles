@@ -18,9 +18,9 @@ vim.opt.scrolloff = 10 -- keep 10 to below and above cursor
 vim.opt.sidescrolloff = 10 -- same but to the sides
 
 -- indentation
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.softtabstop = 2
+vim.opt.tabstop = 3
+vim.opt.shiftwidth = 3
+vim.opt.softtabstop = 3
 vim.opt.expandtab = true -- use spaces instead of tab
 vim.opt.smartindent = true -- smart auto-indent
 vim.opt.autoindent = true -- copy indent from current lines
@@ -566,7 +566,7 @@ local function lsp_on_attach(ev)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
 	vim.keymap.set("n", "<leader>fd", function()
-		require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
+		require("fzf-lua").lsp_definitions({ jump1 = true })
 	end, opts)
 	vim.keymap.set("n", "<leader>fr", function()
 		require("fzf-lua").lsp_references()
@@ -646,17 +646,15 @@ vim.lsp.config("lua_ls", {
 vim.lsp.config("pyright", {})
 vim.lsp.config("bashls", {})
 vim.lsp.config("clangd", {
-  -- cmd = {
-  --   "clangd",
-  --   "--background-index",
-  --   "--clang-tidy",
-  --   -- Replace the path below with the actual absolute path to your TNL/src folder
-  --   "-I/~/tnl/src/",
-  -- },
-  -- -- Optional: If you want to ensure it picks up your compiler's standard headers too
-  -- init_options = {
-  --   fallbackFlags = { "-std=c++17" },
-  -- },
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+  },
+  -- Optional: If you want to ensure it picks up your compiler's standard headers too
+  init_options = {
+    fallbackFlags = { "-std=c++17" },
+  },
 })
 
 do
@@ -681,6 +679,7 @@ do
 		filetypes = {
 			"c",
 			"cpp",
+      "cu",
 			"css",
 			"html",
 			"json",
