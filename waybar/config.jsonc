@@ -45,7 +45,7 @@
       }
     },
     "memory": {
-      "format": "RAM: {used} / 16 GiB",
+      "format": "RAM: {used} / 64 GiB",
       "tooltip-format": "Using {percentage}% of memory",
       "on-click": "kitty htop",
       "states": {
