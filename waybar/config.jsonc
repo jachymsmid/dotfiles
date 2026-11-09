@@ -10,7 +10,8 @@
       "clock",
       "cpu",
       "temperature",
-      "memory"
+      "memory",
+      "custom/gpu-usage"
     ],
     "modules-center": [
 	    "hyprland/workspaces"
@@ -54,6 +55,13 @@
         "elevated": 60,
         "extreme": 80
       }
+    },
+    /* configure in .config/gpu_usage_waybar.toml */
+    "custom/gpu-usage": {
+       "format": "{} {icon}",
+       "exec": "gpu-usage-waybar",
+       "return-type": "json",
+       "on-click": "kitty -e nvtop"
     },
     "hyprland/workspaces": {
          "format": "{name}",

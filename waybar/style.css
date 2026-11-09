@@ -15,7 +15,9 @@
 @define-color bottom-border #e29742;
 
 /* gruvbox colors */
-@define-color blue #458588;
+@define-color blue2 #458588;
+@define-color blue #80aa9e;
+@define-color green #8bba7f;
 @define-color dark-brown #504945;
 @define-color dark-gray #7C6F64;
 @define-color dark-gray2 #665C54;
@@ -49,6 +51,7 @@ window#waybar{
 #cpu,
 #memory,
 #temperature,
+#custom-gpu-usage,
 #network,
 #power-profiles-daemon,
 #pulseaudio,
@@ -76,19 +79,25 @@ window#waybar{
 /* cpu module */
 #cpu{
     color: @font;
-    border-bottom: 3px solid @bottom-border;
+    border-bottom: 3px solid @blue;
 }
 
 /* RAM module */
 #memory{
     color: @font;
-    border-bottom: 3px solid @bottom-border;
+    border-bottom: 3px solid @blue;
 }
 
 /* temperature module */
 #temperature{
     color: @font;
-    border-bottom: 3px solid @bottom-border;
+    border-bottom: 3px solid @blue;
+}
+
+/* GPU module */
+#custom-gpu-usage{
+    color: @font;
+    border-bottom: 3px solid @green;
 }
 
 /* workspaces module */
