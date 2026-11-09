@@ -1,5 +1,3 @@
-@define-color backgrgound #ffffff;
-@define-color foreground #ffffff;
 @define-color color1 #575d60; /* dark grey */
 @define-color color2 #e6d6a8; /* beige */
 @define-color color3 #f8f0d2; /* light beige */
@@ -12,6 +10,18 @@
 @define-color color10 #5facb0; /* turquoise */
 @define-color color11 #dc860b;
 
+@define-color font #FBF1C7;
+@define-color background #AD6600;
+@define-color bottom-border #e29742;
+
+/* gruvbox colors */
+@define-color blue #458588;
+@define-color dark-brown #504945;
+@define-color dark-gray #7C6F64;
+@define-color dark-gray2 #665C54;
+@define-color faded-yellow #b57614;
+@define-color orange #e29742;
+
 
 @define-color good #AADB1E;
 @define-color normal #BE5504;
@@ -22,16 +32,23 @@
     font-family: "AtkinsonHyperlegibleMonoNF-Reg";
     font-weight: bold;
 }
+
 window#waybar{
     all:unset;
-    /*background-color: alpha(#29465b, 0.75);*/
+    background-color: @background;
+    border-bottom: 3px solid @faded-yellow;
 }
+
 .tooltip {
     background: alpha(@color7, .7);
     color: @color5;
 }
 
+/* general */
 #clock,
+#cpu,
+#memory,
+#temperature,
 #network,
 #power-profiles-daemon,
 #pulseaudio,
@@ -41,23 +58,47 @@ window#waybar{
 #custom-power,
 #workspaces {
     padding: 0px 6px;
-    margin: 3px 4px;
-    margin-top: 6px;
-    border-radius: 10px;
+    padding-top: 3px;
+    margin: 0px 0px;
+    margin-top: 0px;
+    border-radius: 0px;
     transition: all .2s ease;
 }
+
+/* clock module */
 #clock{
-    color:@background;
-    background: @color1;
+    color:@font;
+    background: @dark-gray2;
+    padding-right: 10px;
+    border-bottom: 3px solid @font;
 }
 
+/* cpu module */
+#cpu{
+    color: @font;
+    border-bottom: 3px solid @bottom-border;
+}
+
+/* RAM module */
+#memory{
+    color: @font;
+    border-bottom: 3px solid @bottom-border;
+}
+
+/* temperature module */
+#temperature{
+    color: @font;
+    border-bottom: 3px solid @bottom-border;
+}
+
+/* workspaces module */
 #workspaces button {
     all:unset;
-    color: alpha(@color1,.9);
-    background: @color4;
-    margin: 1px 2px;
-    padding: 5px 13px;
-    border-radius: 8px;
+    color: alpha(@font,.8);
+    margin: 0px 3px;
+    padding: 5px 5px;
+    padding-bottom: 5px;
+    border-radius: 0px;
 }
 #workspaces button:hover {
     color: alpha(@color3,.5);
@@ -66,46 +107,51 @@ window#waybar{
     transition: all .5s ease;
 }
 #workspaces button.active {
-    color: @color3;
+    color: @ffffff;
     border: none;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
-    padding: 3px 18px;
-    border-radius: 12px;
+    padding: 3px 13px;
+    border-radius: 0px;
+    border-bottom: 3px solid @orange;
 }
+
+/* network module */
 #network{
     transition: all .3s ease;
-    background: @color4;
-    color:@background;
+    color: @font;
     border-bottom: 3px solid @good;
 }
 #network.disconnected{
     border-bottom: @bad;
 }
+
+/* audio module */
 #pulseaudio{
     transition: all .3s ease;
-    color:@background;
-    background: @color4;
+    color: @font;
+    border-bottom: 3px solid @bottom-border;
 }
+
+/* keyboard language module */
 #language{
-    background: @color4;
-    color: @background;
+    color: @font;
+    border-bottom: 3px solid @bottom-border;
 }
+
+/* battery module */
 #battery{
-    color:@background;
-    background: @color4;
-    border-bottom: 3px solid @normal;
+    color:@font;
+    border-bottom: 3px solid @bottom-border;
 
 }
 #battery.charging {
-    color: @background;
+    color: @font;
     background: #26A65B;
     border-bottom: 3px solid #77ff77;
 }
-
 #battery.warning:not(.charging) {
     color: #ffbe61;
 }
-
 #battery.critical:not(.charging) {
     color: #f53c3c;
     animation-name: blink;
@@ -115,19 +161,32 @@ window#waybar{
     animation-direction: alternate;
 }
 
+/* power-profiles module */
 #power-profiles-daemon {
 	transition: all .3s ease;
-	color: @background;
-  background: @color4;
+	color: @font;
 }
 #power-profiles-daemon.power-saver{
-  border-bottom: 3px solid #AADB1E;
+  border-bottom: 3px solid @good;
 }
+#power-profiles-daemon.balanced{
+  border-bottom: 3px solid @bottom-border;
+}
+#power-profiles-daemon.performance{
+  border-bottom: 3px solid @bad;
+}
+
+/* backlight module */
 #backlight {
-	color: @background;
-  background: @color4;
+	color: @font;
+  border-bottom: 3px solid @bottom-border;
 }
+
+/* custom power module */
 #custom-power{
-  color: @background;
+  color: #ffffff;
   background: #8b0000;
+  padding: 0px 9px; 
+  padding-bottom: 4px;
+  border-bottom: 3px solid #C54716;
 }

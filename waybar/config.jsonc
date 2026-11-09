@@ -2,12 +2,15 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 35,
+    "height": 25,
     "spacing": 0,
     "fixed-center": true,
     "reload_style_on_change": true,
     "modules-left": [
-      "clock"
+      "clock",
+      "cpu",
+      "temperature",
+      "memory"
     ],
     "modules-center": [
 	    "hyprland/workspaces"
@@ -21,98 +24,107 @@
       "battery",
 	    "custom/power"
     ],
+
     // modules config
+    
+    "cpu": {
+      "format": "CPU: {usage}%",
+      "on-click": "kitty htop",
+      "states": {
+        "default": 0,
+        "normal" : 30,
+        "elevated": 60,
+        "extreme": 80
+      }
+    },
+    "temperature": {
+      "format": "TEMP: {temperatureC}°C",
+      "states": {
+        "normal": 0,
+        "elevated": 50,
+        "extreme": 70,
+      }
+    },
+    "memory": {
+      "format": "RAM: {used} / 16 GiB",
+      "tooltip-format": "Using {percentage}% of memory",
+      "on-click": "kitty htop",
+      "states": {
+        "default": 0,
+        "normal" : 30,
+        "elevated": 60,
+        "extreme": 80
+      }
+    },
     "hyprland/workspaces": {
+         "format": "{name}",
          "disable-scroll": true,
          "all-outputs": true,
          "warp-on-scroll": false,
-         "format": "{name}",
-         "format-icons": {
-             "1": "",
-             "2": "",
-             "3": "",
-             "4": "",
-             "5": "",
-             "urgent": "",
-             "focused": "",
-             "default": ""
-         }
      },
     "hyprland/language": {
-        "format": "   {}",
+        "format": "LANG: {}",
         "format-en": "EN",
         "format-cz": "CZ"
     },
-    
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
-    
+ 
     "clock": {
         "timezone": "Europe/Prague",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big>{:%B %Y}</big>"
         // "format-alt": "{:%Y-%m-%d}"
     },
+
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{icon}  {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format": "Brightness:  {percent}%"//,
+        //"format-icons": ["", "", "", "", "", "", "", "", ""]
     },
+
     "battery": {
         "states": {
             "good": 85,
             "warning": 20,
             "critical": 15
         },
-        "format": "󰁾 {capacity}%",
+        "format": "Charge: {capacity}%",
       	"tooltip": true,
-      	"tooltip-format": "Time: {time}"
+      	"tooltip-format": "Time left: {time}"
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
     },
+
     "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}",
+      "format": "Profile: {profile}",
+      "tooltip-format": "Power profile: {profile} {icon}",
       "tooltip": true,
       "format-icons": {
-        "default": "  ",
-        "performance": "  ",
-        "balanced": "  ",
-        "power-saver": "  "
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
       }
     },
+
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "  {essid}",
-        "format-ethernet": "Online",
+        "format-wifi": "WiFi: {essid}",
+        "format-ethernet": "Ethernet",
         "tooltip-format": "{essid} {signalStrength}%",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected",
-        // "on-click": "nm-applet"
         "tooltip": true,
-        "tooltip-format": "{essid} : {ipaddr}"
+        "tooltip-format": "{essid} : {ipaddr}",
+        "on-click": "kitty nmcli device wifi list"
     },
+
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{icon}  {volume}%",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "󰝟 ",
-        "format-source": " ",
-        "format-source-muted": " ",
-        "format-icons": {
-            "default": [" ", " ", " "]
-        },
-	    "tooltip": true,
-	    "tooltip-format": "Volume: {volume}%\nSource: {volume}%",
+        "format": "Volume: {volume}%",
+        "format-muted": "Muted",
+	      "tooltip": true,
+	      "tooltip-format": "Volume: {volume}%\nSource: {volume}%",
         "on-click": "pavucontrol"
     },
+
     "custom/power": {
       "format" : " 󰤆 ",
       "tooltip": false,
