@@ -566,7 +566,7 @@ local function lsp_on_attach(ev)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
 	vim.keymap.set("n", "<leader>fd", function()
-		require("fzf-lua").lsp_definitions({ jump1 = true })
+		require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
 	end, opts)
 	vim.keymap.set("n", "<leader>fr", function()
 		require("fzf-lua").lsp_references()
@@ -679,7 +679,7 @@ do
 		filetypes = {
 			"c",
 			"cpp",
-      "cu",
+                        "cu",
 			"css",
 			"html",
 			"json",
