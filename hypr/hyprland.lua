@@ -29,8 +29,8 @@ hl.monitor({
     scale = "1",
 })
 
-hl.bind("monitoraddedm", hl.dsp.exec_cmd("~/.config/hypr/scripts/monitors.sh"))
-hl.bind("monitorremoved", hl.dsp.exec_cmd("~/.config/hypr/scripts/monitors.sh"))
+-- hl.bind("monitoraddedm", hl.dsp.exec_cmd("~/.config/hypr/scripts/monitors.sh"))
+-- hl.bind("monitorremoved", hl.dsp.exec_cmd("~/.config/hypr/scripts/monitors.sh"))
 
 --##################
 --## MY PROGRAMS ###
@@ -220,8 +220,8 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind("ALT + J", hl.dsp.exec_cmd("sh $HOME/.config/hypr/run_joplin.sh"))
 
-hl.bind(SUPER_SHIFT .. " + l", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(SUPER_SHIFT .. " + s", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind("SUPER+SHIFT + l", hl.dsp.exec_cmd("hyprlock"))
+hl.bind("SUPER+SHIFT + s", hl.dsp.exec_cmd("hyprshot -m region"))
 
 hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "right" }))
@@ -331,7 +331,7 @@ hl.config({
     },
     -- https://wiki.hyprland.org/Configuring/Variables/#animations
     animations = {
-        enabled = "no, please :)",
+        enabled = false,
         -- Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
     },
     -- Ref https://wiki.hyprland.org/Configuring/Workspace-Rules/
