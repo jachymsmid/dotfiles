@@ -17,16 +17,15 @@
     ],
     "modules-right": [
       "hyprland/language",
-      "power-profiles-daemon",
-      "backlight",
+      /* "power-profiles-daemon", */
+      /* "backlight", */
 	    "pulseaudio",
 	    "network",
-      "battery",
+      /* "battery", */
 	    "custom/power"
     ],
 
     // modules config
-    
     "cpu": {
       "format": "CPU: {usage}%",
       "on-click": "kitty htop",
